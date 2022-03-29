@@ -43,6 +43,7 @@ const KeyboardContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 440px;
 `;
 
 export default Keyboard;
