@@ -5,6 +5,9 @@ import styled from 'styled-components';
 import { Toolbar, AppBar, IconButton } from '@mui/material';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+import MenuIcon from '@mui/icons-material/Menu';
+
+import Sidebar from './Sidebar';
 
 const Navbar = () => {
   return (
@@ -13,6 +16,7 @@ const Navbar = () => {
       sx={{ background: 'transparent', boxShadow: 'none', width: '100vw' }}
     >
       <Toolbar>
+        <Sidebar />
         <IconButton
           color='primary'
           aria-label='help button'
