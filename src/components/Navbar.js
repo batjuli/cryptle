@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { Toolbar, AppBar, IconButton } from '@mui/material';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
-import MenuIcon from '@mui/icons-material/Menu';
+import { Link } from 'react-router-dom';
 
 import Sidebar from './Sidebar';
 
@@ -20,9 +20,9 @@ const Navbar = () => {
         <IconButton
           color='primary'
           aria-label='help button'
-          component='span'
           sx={{ color: 'white' }}
-          onClick={() => console.log('clicked help')}
+          component={Link}
+          to='/help'
         >
           <HelpOutlineIcon fontSize='large' />
         </IconButton>
