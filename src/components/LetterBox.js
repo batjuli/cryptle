@@ -3,7 +3,9 @@ import React from 'react';
 import styled from 'styled-components';
 
 const LetterBox = (props) => {
-  const { value, encryptedLetter } = props;
+  let { value, encryptedLetter } = props;
+  value = value.toUpperCase();
+  encryptedLetter = encryptedLetter.toUpperCase();
   return (
     <Container>
       <Box>{value}</Box>
@@ -20,6 +22,7 @@ const Container = styled.div`
   width: 39px;
   height: 100px;
   justify-content: center;
+  margin: 2px;
 `;
 
 const Box = styled.div`

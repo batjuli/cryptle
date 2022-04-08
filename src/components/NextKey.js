@@ -1,17 +1,17 @@
 import React from 'react';
 
 import styled from 'styled-components';
-import BackspaceIcon from '@mui/icons-material/Backspace';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
-const DeleteKey = () => {
+const NextKey = () => {
   return (
     <KeyContainer>
-      <BackspaceIcon />
+      <ArrowForwardIcon />
     </KeyContainer>
   );
 };
 
-export default DeleteKey;
+export default NextKey;
 
 const KeyContainer = styled.div`
   display: flex;
