@@ -24,4 +24,6 @@ const Container = styled.div`
   flex-wrap: wrap;
   width: 60vw;
   justify-content: center;
+  max-height: 50vh;
+  overflow-y: auto;
 `;
