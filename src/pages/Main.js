@@ -6,7 +6,7 @@ import Keyboard from '../components/Keyboard';
 import MessageContainer from '../components/MessageContainer';
 
 const Main = () => {
-  const [selectedLetter, setSelectedLetter] = React.useState('B');
+  const [selectedLetter, setSelectedLetter] = React.useState(null);
 
   // set every letter with the selected letter's encrypted letter value = to key pressed
 
@@ -59,6 +59,19 @@ const Main = () => {
       })
     );
   };
+
+  // keydown listening
+  const handleKeyDown = (event) => {
+    if (event.keyCode >= 65 && event.keyCode <= 90) {
+      handleKeyPress(event.key);
+    }
+  };
+  React.useEffect(() => {
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [selectedLetter]);
 
   return (
     <Container>

@@ -34,6 +34,9 @@ const Container = styled.div`
   height: 100px;
   justify-content: center;
   margin: 2px;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const Box = styled.div`
