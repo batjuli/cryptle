@@ -16,7 +16,11 @@ const Navbar = () => {
     >
       <Toolbar>
         <Sidebar />
-        <Title>cryptle</Title>
+        <Title>
+          <Link style={{ textDecoration: 'none', color: 'white' }} to='/'>
+            cryptle
+          </Link>
+        </Title>
         <IconButton
           color='primary'
           aria-label='help button'
