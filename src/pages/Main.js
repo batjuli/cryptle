@@ -6,19 +6,19 @@ import { Button } from '@mui/material';
 import Keyboard from '../components/Keyboard';
 import MessageContainer from '../components/MessageContainer';
 
+import { randomCryptogram } from '../utils/randomCryptogram';
+
 const Main = () => {
   const [selectedLetter, setSelectedLetter] = React.useState(null);
 
   // set every letter with the selected letter's encrypted letter value = to key pressed
 
   const [message, setMessage] = React.useState(
-    'an engineer has a duty to the engineering profession and the public they serve'
-      .toUpperCase()
-      .split('')
+    'an engineer has a duty to the engineering profession and the public they serve'.toUpperCase()
   );
 
   const [encryptedMessage, setEncryptedMessage] = React.useState(
-    'xk bkdfkbbo exp x arqv ql qeb bkdfkbbofkd molcbppflk xka qeb mryifz qebv pbosb'.toUpperCase()
+    randomCryptogram(message)
   );
 
   // game state = array of arrays, child arrays = [encryptedLetter, usersInput]
@@ -46,10 +46,10 @@ const Main = () => {
     const solution = gameState.map((letter) => {
       return letter[1] != null ? letter[1].toUpperCase() : ' ';
     });
-    if (JSON.stringify(solution) === JSON.stringify(message)) {
+    if (JSON.stringify(solution) === JSON.stringify(message.split(''))) {
       handleWin();
     }
-  }, [gameState]);
+  }, [gameState, message]);
 
   // update selected letter with key pressed
   const handleKeyPress = (letter) => {
@@ -60,12 +60,12 @@ const Main = () => {
           // chosen letter, update it
           return [x, letter];
         } else if (
-          y != null &&
-          letter != null &&
-          y == letter &&
-          x != selectedLetter
+          y !== null &&
+          letter !== null &&
+          y === letter &&
+          x !== selectedLetter
         ) {
-          // reset other boxes that used the same letter TODO
+          // reset other boxes that used the same letter
           return [x, null];
         } else {
           // anything else
@@ -80,7 +80,7 @@ const Main = () => {
     if (event.keyCode >= 65 && event.keyCode <= 90) {
       // letters
       handleKeyPress(event.key);
-    } else if (event.keyCode == 8) {
+    } else if (event.keyCode === 8) {
       // backspace
       handleKeyPress(null);
     }
@@ -92,7 +92,7 @@ const Main = () => {
     };
   }, [selectedLetter, gameState]);
 
-  const handleReset = () => {
+  const handleClear = () => {
     setGameState(
       encryptedMessage.split('').map((x) => {
         return [x, null];
@@ -111,9 +111,9 @@ const Main = () => {
         <Button
           variant='outlined'
           sx={{ width: '120px' }}
-          onClick={handleReset}
+          onClick={handleClear}
         >
-          Reset
+          Clear
         </Button>
         <Button
           variant='outlined'
