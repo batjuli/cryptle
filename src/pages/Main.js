@@ -47,8 +47,8 @@ const Main = () => {
         } else if (
           y != null &&
           letter != null &&
-          y.toUpperCase == letter.toUpperCase() &&
-          x.toUpperCase != selectedLetter
+          y == letter &&
+          x != selectedLetter
         ) {
           // reset other boxes that used the same letter TODO
           return [x, null];
