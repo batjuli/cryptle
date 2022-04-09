@@ -65,6 +65,7 @@ const Main = () => {
       <MessageContainer
         gameState={gameState}
         handleLetterSelect={setSelectedLetter}
+        selectedLetter={selectedLetter}
       />
       <Keyboard handleKeyPress={handleKeyPress} />
     </Container>

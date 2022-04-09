@@ -3,17 +3,26 @@ import React from 'react';
 import styled from 'styled-components';
 
 const LetterBox = (props) => {
-  let { value, encryptedLetter, handleLetterSelect } = props;
+  let { value, encryptedLetter, handleLetterSelect, selectedLetter } = props;
   if (value != null) {
     value = value.toUpperCase();
   }
   encryptedLetter = encryptedLetter.toUpperCase();
-  return (
-    <Container onClick={() => handleLetterSelect(encryptedLetter)}>
-      <Box>{value}</Box>
-      <EncryptedLetter>{encryptedLetter}</EncryptedLetter>
-    </Container>
-  );
+  if (selectedLetter === encryptedLetter) {
+    return (
+      <Container onClick={() => handleLetterSelect(encryptedLetter)}>
+        <SelectedBox>{value}</SelectedBox>
+        <SelectedEncryptedLetter>{encryptedLetter}</SelectedEncryptedLetter>
+      </Container>
+    );
+  } else {
+    return (
+      <Container onClick={() => handleLetterSelect(encryptedLetter)}>
+        <Box>{value}</Box>
+        <EncryptedLetter>{encryptedLetter}</EncryptedLetter>
+      </Container>
+    );
+  }
 };
 
 export default LetterBox;
@@ -42,4 +51,21 @@ const EncryptedLetter = styled.text`
   text-align: center;
   font-size: 1.7em;
   color: #616169;
+`;
+
+const SelectedBox = styled.div`
+  display: flex;
+  height: 50px;
+  width: 40px;
+  border: 2px solid #cba05f;
+  border-radius: 5px;
+  font-size: 2em;
+  justify-content: center;
+  line-height: 50px;
+`;
+
+const SelectedEncryptedLetter = styled.text`
+  text-align: center;
+  font-size: 1.7em;
+  color: #cba05f;
 `;

@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import LetterBox from '../components/LetterBox';
 
 const MessageContainer = (props) => {
-  const { gameState, handleLetterSelect } = props;
+  const { gameState, handleLetterSelect, selectedLetter } = props;
 
   return (
     <Container>
@@ -17,6 +17,7 @@ const MessageContainer = (props) => {
             value={letter[1]}
             encryptedLetter={letter[0]}
             handleLetterSelect={handleLetterSelect}
+            selectedLetter={selectedLetter}
           />
         )
       )}
