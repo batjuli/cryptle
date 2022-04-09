@@ -11,13 +11,13 @@ const Main = () => {
   // set every letter with the selected letter's encrypted letter value = to key pressed
 
   const [message, setMessage] = React.useState(
-    'an engineer has a duty to the engineering profession and the public they serve'.split(
-      ''
-    )
+    'an engineer has a duty to the engineering profession and the public they serve'
+      .toUpperCase()
+      .split('')
   );
 
   const [encryptedMessage, setEncryptedMessage] = React.useState(
-    'xk bkdfkbbo exp x arqv ql qeb bkdfkbbofkd molcbppflk xka qeb mryifz qebv pbosb'
+    'xk bkdfkbbo exp x arqv ql qeb bkdfkbbofkd molcbppflk xka qeb mryifz qebv pbosb'.toUpperCase()
   );
 
   // game state = array of arrays, child arrays = [encryptedLetter, usersInput]
@@ -38,25 +38,34 @@ const Main = () => {
 
   // update selected letter with key pressed
   const handleKeyPress = (letter) => {
-    console.log(`pressed the ${letter} key`);
     // for each selected letter in the game state, update the user solution with letter
     setGameState(
       gameState.map(([x, y]) => {
-        console.log(x, y);
-        if (x.toUpperCase() === selectedLetter) {
+        if (x === selectedLetter) {
+          // chosen letter, update it
           return [x, letter];
+        } else if (
+          y != null &&
+          letter != null &&
+          y.toUpperCase == letter.toUpperCase() &&
+          x.toUpperCase != selectedLetter
+        ) {
+          // reset other boxes that used the same letter TODO
+          return [x, null];
         } else {
+          // anything else
           return [x, y];
         }
       })
     );
-    console.log(selectedLetter);
-    console.log(gameState);
   };
 
   return (
     <Container>
-      <MessageContainer gameState={gameState} />
+      <MessageContainer
+        gameState={gameState}
+        handleLetterSelect={setSelectedLetter}
+      />
       <Keyboard handleKeyPress={handleKeyPress} />
     </Container>
   );

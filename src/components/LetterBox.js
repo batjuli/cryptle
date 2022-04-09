@@ -3,13 +3,13 @@ import React from 'react';
 import styled from 'styled-components';
 
 const LetterBox = (props) => {
-  let { value, encryptedLetter } = props;
+  let { value, encryptedLetter, handleLetterSelect } = props;
   if (value != null) {
     value = value.toUpperCase();
   }
   encryptedLetter = encryptedLetter.toUpperCase();
   return (
-    <Container>
+    <Container onClick={() => handleLetterSelect(encryptedLetter)}>
       <Box>{value}</Box>
       <EncryptedLetter>{encryptedLetter}</EncryptedLetter>
     </Container>

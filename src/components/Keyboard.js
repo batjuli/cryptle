@@ -26,7 +26,7 @@ const Keyboard = (props) => {
       <BottomKeyboardRow>
         {row3.map((letter) => {
           if (letter === 'DEL') {
-            return <DeleteKey />;
+            return <DeleteKey handleKeyPress={handleKeyPress} />;
           } else if (letter === 'NEXT') {
             return <NextKey />;
           } else {

@@ -3,9 +3,10 @@ import React from 'react';
 import styled from 'styled-components';
 import BackspaceIcon from '@mui/icons-material/Backspace';
 
-const DeleteKey = () => {
+const DeleteKey = (props) => {
+  const { handleKeyPress } = props;
   return (
-    <KeyContainer>
+    <KeyContainer onClick={() => handleKeyPress(null)}>
       <BackspaceIcon />
     </KeyContainer>
   );
