@@ -3,7 +3,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { Toolbar, AppBar, IconButton } from '@mui/material';
-import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import { Link } from 'react-router-dom';
 
@@ -17,6 +16,7 @@ const Navbar = () => {
     >
       <Toolbar>
         <Sidebar />
+        <Title>cryptle</Title>
         <IconButton
           color='primary'
           aria-label='help button'
@@ -25,16 +25,6 @@ const Navbar = () => {
           to='/help'
         >
           <HelpOutlineIcon fontSize='large' />
-        </IconButton>
-        <Title>cryptle</Title>
-        <IconButton
-          color='primary'
-          aria-label='settings button'
-          component='span'
-          sx={{ color: 'white' }}
-          onClick={() => console.log('clicked settings')}
-        >
-          <SettingsOutlinedIcon fontSize='large' />
         </IconButton>
       </Toolbar>
     </AppBar>
