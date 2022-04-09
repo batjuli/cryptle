@@ -1,6 +1,7 @@
 import React from 'react';
 
 import styled from 'styled-components';
+import { Button } from '@mui/material';
 
 import Keyboard from '../components/Keyboard';
 import MessageContainer from '../components/MessageContainer';
@@ -35,6 +36,20 @@ const Main = () => {
       })
     );
   }, [encryptedMessage]);
+
+  const handleWin = () => {
+    console.log('you win!');
+  };
+
+  // check if won
+  React.useEffect(() => {
+    const solution = gameState.map((letter) => {
+      return letter[1] != null ? letter[1].toUpperCase() : ' ';
+    });
+    if (JSON.stringify(solution) === JSON.stringify(message)) {
+      handleWin();
+    }
+  }, [gameState]);
 
   // update selected letter with key pressed
   const handleKeyPress = (letter) => {
@@ -79,6 +94,14 @@ const Main = () => {
 
   return (
     <Container>
+      <ButtonsContainer>
+        <Button variant='outlined' sx={{ width: '120px' }}>
+          Reset
+        </Button>
+        <Button variant='outlined' sx={{ width: '120px' }}>
+          New Game
+        </Button>
+      </ButtonsContainer>
       <MessageContainer
         gameState={gameState}
         handleLetterSelect={setSelectedLetter}
@@ -95,6 +118,12 @@ const Container = styled.div`
   width: 60vw;
   align-items: center;
   margin-top: 50px;
+`;
+
+const ButtonsContainer = styled.div`
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
 `;
 
 export default Main;
