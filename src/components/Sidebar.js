@@ -7,6 +7,7 @@ import ListItemText from '@mui/material/ListItemText';
 
 import { IconButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
   const [open, setOpen] = React.useState(false);
@@ -32,17 +33,22 @@ const Sidebar = () => {
       onClick={toggleDrawer(false)}
       onKeyDown={toggleDrawer(false)}
     >
+      <ListItem button component={Link} to={'/'}>
+        <ListItemText primary={'cryptle'} />
+      </ListItem>
+      <Box sx={{ fontWeight: 'bold', m: 1 }}>
+        Learn more about cryptography and ciphers
+      </Box>
       <List>
-        {[
-          'Learn more about cryptography',
-          'Classical Ciphers',
-          'Modern Ciphers',
-          'Decoder',
-        ].map((text) => (
-          <ListItem button key={text}>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
+        <ListItem button component={Link} to={'/caesar'}>
+          <ListItemText primary={'Caesar Cipher'} />
+        </ListItem>
+        <ListItem button component={Link} to={'/playfair'}>
+          <ListItemText primary={'Playfair Cipher'} />
+        </ListItem>
+        <ListItem button component={Link} to={'/modern'}>
+          <ListItemText primary={'Modern Ciphers'} />
+        </ListItem>
       </List>
     </Box>
   );
