@@ -1,21 +1,36 @@
 const quotesJson = [
   {
-    id: 0,
     from: 'richard buckland, week 1 lecture',
-    quote:
-      "everyone must read the art of war because it is very clever it is an ancient or very old chinese guy writing down his thoughts about war and basically they're not even about war they're about winning and how you win and it's very clever it's very very clever",
+    quote: 'everyone must read the art of war because it is very clever',
   },
   {
-    id: 1,
     from: 'richard buckland',
     quote:
       'an engineer has a duty to the engineering profession and the public it serves',
   },
   {
-    id: 2,
     from: 'richard buckland',
     quote:
-      "risk is invisible. risk means you're taking a gamble. you're throwing a coin. no one ever sees the coin being thrown, all people see is the outcome",
+      "risk is invisible you're throwing a coin no one ever sees the coin being thrown",
+  },
+  {
+    from: 'sun tzu',
+    quote: 'The supreme art of war is to subdue the enemy without fighting',
+  },
+  {
+    from: 'sun tzu',
+    quote:
+      'Let your plans be dark and impenetrable as night, and when you move, fall like a thunderbolt',
+  },
+  {
+    from: 'sun tzu',
+    quote:
+      'There is no instance of a nation benefitting from prolonged warfare',
+  },
+  {
+    from: 'sun tzu',
+    quote:
+      'When you surround an army, leave an outlet free. Do not press a desperate foe too hard.',
   },
 ];
 

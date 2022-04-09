@@ -25,20 +25,13 @@ const Main = () => {
   // game state = array of arrays, child arrays = [encryptedLetter, usersInput]
   const [gameState, setGameState] = React.useState(
     encryptedMessage.split('').map((x) => {
+      // if the encrypted letter is non-alphabetical, keep it as the answer
+      if (!/[a-zA-Z]/.test(x)) {
+        return [x, x];
+      }
       return [x, null];
     })
   );
-
-  // whenever message changes, reset gameState
-  React.useEffect(() => {
-    const newCryptogram = randomCryptogram(message);
-    setEncryptedMessage(newCryptogram);
-    setGameState(
-      newCryptogram.split('').map((x) => {
-        return [x, null];
-      })
-    );
-  }, [message]);
 
   const handleWin = () => {
     console.log('you win!');
@@ -53,6 +46,38 @@ const Main = () => {
       handleWin();
     }
   }, [gameState, message]);
+
+  const handleClear = () => {
+    setGameState(
+      encryptedMessage.split('').map((x) => {
+        // if the encrypted letter is non-alphabetical, keep it as the answer
+        if (!/[a-zA-Z]/.test(x)) {
+          return [x, x];
+        }
+        return [x, null];
+      })
+    );
+    setSelectedLetter(null);
+  };
+
+  const handleNewGame = () => {
+    // change message
+    const newMessage = getRandomQuote().quote.toUpperCase();
+    setMessage(newMessage);
+    const newCryptogram = randomCryptogram(newMessage);
+    setEncryptedMessage(newCryptogram);
+    setGameState(
+      newCryptogram.split('').map((x) => {
+        // if the encrypted letter is non-alphabetical, keep it as the answer
+        if (!/[a-zA-Z]/.test(x)) {
+          return [x, x];
+        }
+        return [x, null];
+      })
+    );
+    // reset selected item
+    setSelectedLetter(null);
+  };
 
   // update selected letter with key pressed
   const handleKeyPress = (letter) => {
@@ -94,21 +119,6 @@ const Main = () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [selectedLetter, gameState]);
-
-  const handleClear = () => {
-    setGameState(
-      encryptedMessage.split('').map((x) => {
-        return [x, null];
-      })
-    );
-    setSelectedLetter(null);
-  };
-
-  const handleNewGame = () => {
-    console.log('new game button pressed');
-    // change message
-    setMessage(getRandomQuote().quote.toUpperCase());
-  };
 
   return (
     <Container>

@@ -8,6 +8,15 @@ const LetterBox = (props) => {
     value = value.toUpperCase();
   }
   encryptedLetter = encryptedLetter.toUpperCase();
+  // if non-alphabetical, make it un-selectable
+  if (!/[a-zA-Z]/.test(encryptedLetter)) {
+    return (
+      <NonselectableContainer>
+        <NonselectableBox>{value}</NonselectableBox>
+        <EncryptedLetter>{encryptedLetter}</EncryptedLetter>
+      </NonselectableContainer>
+    );
+  }
   if (selectedLetter === encryptedLetter) {
     return (
       <Container onClick={() => handleLetterSelect(encryptedLetter)}>
@@ -71,4 +80,22 @@ const SelectedEncryptedLetter = styled.text`
   text-align: center;
   font-size: 1.7em;
   color: #cba05f;
+`;
+
+const NonselectableContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 44px;
+  height: 100px;
+  justify-content: center;
+  margin: 2px;
+`;
+
+const NonselectableBox = styled.div`
+  display: flex;
+  height: 50px;
+  width: 40px;
+  font-size: 2em;
+  justify-content: center;
+  line-height: 50px;
 `;
