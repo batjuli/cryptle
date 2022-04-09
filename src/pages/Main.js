@@ -63,7 +63,11 @@ const Main = () => {
   // keydown listening
   const handleKeyDown = (event) => {
     if (event.keyCode >= 65 && event.keyCode <= 90) {
+      // letters
       handleKeyPress(event.key);
+    } else if (event.keyCode == 8) {
+      // backspace
+      handleKeyPress(null);
     }
   };
   React.useEffect(() => {
@@ -71,7 +75,7 @@ const Main = () => {
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [selectedLetter]);
+  }, [selectedLetter, gameState]);
 
   return (
     <Container>
