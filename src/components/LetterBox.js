@@ -19,7 +19,7 @@ export default LetterBox;
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: 39px;
+  width: 44px;
   height: 100px;
   justify-content: center;
   margin: 2px;
@@ -28,7 +28,7 @@ const Container = styled.div`
 const Box = styled.div`
   display: flex;
   height: 50px;
-  width: 35px;
+  width: 40px;
   border: 2px solid #616169;
   border-radius: 5px;
   font-size: 2em;

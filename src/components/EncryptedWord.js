@@ -20,6 +20,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: row;
   margin: 15px;
+  margin-top: 0;
 `;
 
 export default EncryptedWord;

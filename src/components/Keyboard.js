@@ -49,6 +49,8 @@ const BottomKeyboardRow = styled.div`
 `;
 
 const KeyboardContainer = styled.div`
+  position: absolute;
+  bottom: 15px;
   display: flex;
   flex-direction: column;
   justify-content: center;

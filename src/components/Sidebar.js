@@ -3,14 +3,9 @@ import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 
-import SchoolIcon from '@mui/icons-material/School';
-
-import { Toolbar, AppBar, IconButton } from '@mui/material';
+import { IconButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 
 const Sidebar = () => {
@@ -45,9 +40,6 @@ const Sidebar = () => {
           'Decoder',
         ].map((text) => (
           <ListItem button key={text}>
-            <ListItemIcon>
-              <SchoolIcon />
-            </ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
         ))}
