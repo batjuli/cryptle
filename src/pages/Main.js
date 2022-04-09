@@ -5,6 +5,7 @@ import { Button } from '@mui/material';
 
 import Keyboard from '../components/Keyboard';
 import MessageContainer from '../components/MessageContainer';
+import WinModal from '../components/WinModal';
 
 import { randomCryptogram } from '../utils/randomCryptogram';
 import { getRandomQuote } from '../utils/getRandomQuote';
@@ -33,8 +34,13 @@ const Main = () => {
     })
   );
 
+  // state for the win modal
+  const [modalOpen, setModalOpen] = React.useState(false);
+  const handleModalOpen = () => setModalOpen(true);
+  const handleModalClose = () => setModalOpen(false);
+
   const handleWin = () => {
-    console.log('you win!');
+    handleModalOpen();
   };
 
   // check if won
@@ -61,6 +67,8 @@ const Main = () => {
   };
 
   const handleNewGame = () => {
+    // close modal if it's open
+    handleModalClose();
     // change message
     const newMessage = getRandomQuote().quote.toUpperCase();
     setMessage(newMessage);
@@ -122,6 +130,12 @@ const Main = () => {
 
   return (
     <Container>
+      <WinModal
+        open={modalOpen}
+        handleModalClose={handleModalClose}
+        message={message}
+        handleNewGame={handleNewGame}
+      />
       <ButtonsContainer>
         <Button
           variant='outlined'
