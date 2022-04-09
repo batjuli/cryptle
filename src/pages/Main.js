@@ -92,13 +92,34 @@ const Main = () => {
     };
   }, [selectedLetter, gameState]);
 
+  const handleReset = () => {
+    setGameState(
+      encryptedMessage.split('').map((x) => {
+        return [x, null];
+      })
+    );
+    setSelectedLetter(null);
+  };
+
+  const handleNewGame = () => {
+    console.log('new game button pressed');
+  };
+
   return (
     <Container>
       <ButtonsContainer>
-        <Button variant='outlined' sx={{ width: '120px' }}>
+        <Button
+          variant='outlined'
+          sx={{ width: '120px' }}
+          onClick={handleReset}
+        >
           Reset
         </Button>
-        <Button variant='outlined' sx={{ width: '120px' }}>
+        <Button
+          variant='outlined'
+          sx={{ width: '120px' }}
+          onClick={handleNewGame}
+        >
           New Game
         </Button>
       </ButtonsContainer>
