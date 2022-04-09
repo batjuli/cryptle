@@ -7,7 +7,9 @@ import NextKey from './NextKey';
 
 import Key from './Key';
 
-const Keyboard = () => {
+const Keyboard = (props) => {
+  const { handleKeyPress } = props;
+
   const row1 = ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'];
   const row2 = ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'];
   const row3 = ['NEXT', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', 'DEL'];
@@ -17,7 +19,7 @@ const Keyboard = () => {
       {[row1, row2].map((row) => (
         <KeyboardRow>
           {row.map((letter) => (
-            <Key letter={letter} />
+            <Key handleKeyPress={handleKeyPress} letter={letter} />
           ))}
         </KeyboardRow>
       ))}
@@ -28,7 +30,7 @@ const Keyboard = () => {
           } else if (letter === 'NEXT') {
             return <NextKey />;
           } else {
-            return <Key letter={letter} />;
+            return <Key handleKeyPress={handleKeyPress} letter={letter} />;
           }
         })}
       </BottomKeyboardRow>

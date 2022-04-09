@@ -4,7 +4,9 @@ import styled from 'styled-components';
 
 const LetterBox = (props) => {
   let { value, encryptedLetter } = props;
-  value = value.toUpperCase();
+  if (value != null) {
+    value = value.toUpperCase();
+  }
   encryptedLetter = encryptedLetter.toUpperCase();
   return (
     <Container>

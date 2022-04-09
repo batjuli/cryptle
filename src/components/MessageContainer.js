@@ -2,17 +2,20 @@ import React from 'react';
 
 import styled from 'styled-components';
 
-import EncryptedWord from './EncryptedWord';
+import LetterBox from '../components/LetterBox';
 
 const MessageContainer = (props) => {
-  const { message } = props;
-  // unpack message words
-  const words = message.split(' ');
+  const { gameState } = props;
+
   return (
     <Container>
-      {words.map((word) => (
-        <EncryptedWord word={word} />
-      ))}
+      {gameState.map((letter) =>
+        letter[0] === ' ' ? (
+          <Space />
+        ) : (
+          <LetterBox value={letter[1]} encryptedLetter={letter[0]} />
+        )
+      )}
     </Container>
   );
 };
@@ -26,4 +29,8 @@ const Container = styled.div`
   justify-content: center;
   max-height: 60vh;
   overflow-y: auto;
+`;
+
+const Space = styled.div`
+  width: 45px;
 `;

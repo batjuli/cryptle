@@ -3,8 +3,10 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Key = (props) => {
-  const { letter } = props;
-  return <KeyContainer>{letter}</KeyContainer>;
+  const { letter, handleKeyPress } = props;
+  return (
+    <KeyContainer onClick={() => handleKeyPress(letter)}>{letter}</KeyContainer>
+  );
 };
 
 export default Key;
