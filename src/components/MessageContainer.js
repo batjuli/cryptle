@@ -32,7 +32,7 @@ const Container = styled.div`
   flex-wrap: wrap;
   width: 60vw;
   justify-content: center;
-  max-height: 60vh;
+  max-height: 55vh;
   overflow-y: auto;
 `;
 

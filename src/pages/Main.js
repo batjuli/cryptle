@@ -7,6 +7,7 @@ import Keyboard from '../components/Keyboard';
 import MessageContainer from '../components/MessageContainer';
 
 import { randomCryptogram } from '../utils/randomCryptogram';
+import { getRandomQuote } from '../utils/getRandomQuote';
 
 const Main = () => {
   const [selectedLetter, setSelectedLetter] = React.useState(null);
@@ -14,7 +15,7 @@ const Main = () => {
   // set every letter with the selected letter's encrypted letter value = to key pressed
 
   const [message, setMessage] = React.useState(
-    'an engineer has a duty to the engineering profession and the public they serve'.toUpperCase()
+    getRandomQuote().quote.toUpperCase()
   );
 
   const [encryptedMessage, setEncryptedMessage] = React.useState(
@@ -28,14 +29,16 @@ const Main = () => {
     })
   );
 
-  // whenever encrypted message changes (new game), update gameState
+  // whenever message changes, reset gameState
   React.useEffect(() => {
+    const newCryptogram = randomCryptogram(message);
+    setEncryptedMessage(newCryptogram);
     setGameState(
-      encryptedMessage.split('').map((x) => {
+      newCryptogram.split('').map((x) => {
         return [x, null];
       })
     );
-  }, [encryptedMessage]);
+  }, [message]);
 
   const handleWin = () => {
     console.log('you win!');
@@ -103,6 +106,8 @@ const Main = () => {
 
   const handleNewGame = () => {
     console.log('new game button pressed');
+    // change message
+    setMessage(getRandomQuote().quote.toUpperCase());
   };
 
   return (
