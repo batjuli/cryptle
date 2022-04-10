@@ -14,12 +14,12 @@ const HelpModal = (props) => {
           <h2>What is cryptle</h2>
           <div>
             Cryptle is a resource for learning more about cryptography and
-            ciphers, with a cryptogram game for practice.
+            ciphers, with a cryptogram game for fun.
           </div>
           <h2>How do I play?</h2>
           <div>
             A cryptogram is a type of game where you attempt to decrypt an
-            encrypted message through substituting letters.{' '}
+            encrypted message through substituting letters.
           </div>
           <div>Here are some tips to help you get started on solving:</div>
           <ul>
