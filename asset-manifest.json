@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/cryptle/static/css/main.e44a3dff.css",
+    "main.js": "/cryptle/static/js/main.f1276c48.js",
+    "static/js/787.c4788560.chunk.js": "/cryptle/static/js/787.c4788560.chunk.js",
+    "index.html": "/cryptle/index.html",
+    "main.e44a3dff.css.map": "/cryptle/static/css/main.e44a3dff.css.map",
+    "main.f1276c48.js.map": "/cryptle/static/js/main.f1276c48.js.map",
+    "787.c4788560.chunk.js.map": "/cryptle/static/js/787.c4788560.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e44a3dff.css",
+    "static/js/main.f1276c48.js"
+  ]
+}
