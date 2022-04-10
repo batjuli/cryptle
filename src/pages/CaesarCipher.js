@@ -104,7 +104,12 @@ const CaesarCipher = () => {
       <div>Your message:</div>
       <TextInput rows='4' value={messageValue} onChange={handleMessageChange} />
       <div>Encrypted message:</div>
-      <TextInput rows='4' value={cipherValue} onChange={handleCipherChange} />
+      <TextInput
+        rows='4'
+        value={cipherValue}
+        onChange={handleCipherChange}
+        readonly
+      />
     </Container>
   );
 };
