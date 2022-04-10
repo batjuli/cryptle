@@ -22,4 +22,7 @@ const KeyContainer = styled.div`
   justify-content: center;
   line-height: 60px;
   margin: 2px;
+  &:hover {
+    cursor: pointer;
+  }
 `;
