@@ -7,6 +7,7 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 import CipherLetter from '../components/CipherLetter';
+import { getCaesarMapping } from '../utils/caesarCipher';
 
 import { alphabet } from '../utils/caesarCipher';
 
@@ -30,6 +31,24 @@ const CaesarCipher = () => {
     }
     setShift(val);
   };
+
+  const mapping = getCaesarMapping(shift);
+
+  // whenever shift or message changes, update cipher message
+  React.useEffect(() => {
+    // break down
+    const messageArray = messageValue.split('');
+    // map
+    const cipherArray = messageArray.map((letter) => {
+      if (!(letter in mapping)) {
+        return letter;
+      }
+      return mapping[letter];
+    });
+    // make string
+    const cipherString = cipherArray.join('');
+    setCipherValue(cipherString);
+  }, [messageValue, shift]);
 
   return (
     <Container>
@@ -73,7 +92,7 @@ const CaesarCipher = () => {
         </NumberContainer>
         <LettersContainer>
           {alphabet.map((letter) => {
-            return <CipherLetter letter={letter} highlighted />;
+            return <CipherLetter letter={mapping[letter]} highlighted />;
           })}
         </LettersContainer>
         <LettersContainer>

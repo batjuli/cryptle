@@ -26,3 +26,18 @@ export const alphabet = [
   'Y',
   'Z',
 ];
+
+// takes an integer number (positive or negative) and returns a caesar cipher mapping
+export const getCaesarMapping = (shift) => {
+  let res = {};
+  alphabet.map((letter) => {
+    let ix = (alphabet.indexOf(letter) + shift) % 26;
+    if (ix < 0) {
+      ix = 26 + ix;
+    }
+    res[letter] = alphabet[ix];
+    // add lower case mapping too
+    res[letter.toLowerCase()] = alphabet[ix].toLowerCase();
+  });
+  return res;
+};
