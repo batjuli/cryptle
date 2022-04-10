@@ -32,6 +32,25 @@ const quotesJson = [
     quote:
       'When you surround an army, leave an outlet free. Do not press a desperate foe too hard.',
   },
+  {
+    from: 'sun tzu',
+    quote:
+      'Plan for what it is difficult while it is easy, do what is great while it is small.',
+  },
+  {
+    from: 'sun tzu',
+    quote:
+      'Energy may be likened to the bending of a crossbow; decision, to the releasing of a trigger.',
+  },
+  {
+    from: 'sun tzu',
+    quote:
+      'Convince your enemy that he will gain very little by attacking you; this will diminish his enthusiasm.',
+  },
+  {
+    from: 'sun tzu',
+    quote: 'Appear weak when you are strong, and strong when you are weak.',
+  },
 ];
 
 export default quotesJson;
