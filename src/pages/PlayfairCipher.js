@@ -33,8 +33,14 @@ const PlayfairCipher = () => {
 
   const keysquare = getKeySquare(keywordValue);
 
-  const encryptedMessage = playfairEncrypt(keysquare, messageValue);
-  console.log(encryptedMessage);
+  // whenever keyword, keysquare, or message changes, update cipher value
+  React.useEffect(() => {
+    const encryptedMessage = playfairEncrypt(
+      keysquare,
+      messageValue
+    ).toLowerCase();
+    setCipherValue(encryptedMessage);
+  }, [messageValue, keywordValue, keysquare]);
 
   return (
     <Container>
@@ -59,7 +65,12 @@ const PlayfairCipher = () => {
       <div>Your message:</div>
       <TextInput rows='4' value={messageValue} onChange={handleMessageChange} />
       <div>Encrypted message:</div>
-      <TextInput rows='4' value={cipherValue} onChange={handleCipherChange} />
+      <TextInput
+        rows='4'
+        value={cipherValue}
+        onChange={handleCipherChange}
+        readonly
+      />
     </Container>
   );
 };

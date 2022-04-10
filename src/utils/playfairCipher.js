@@ -29,7 +29,7 @@ export const alphabet = [
 
 // given a keyword, generates a 2d array representing the 5x5 keysquare grid
 export const getKeySquare = (keyword) => {
-  let alphabetLetters = alphabet.filter((c) => c != 'J');
+  let alphabetLetters = alphabet.filter((c) => c !== 'J');
   // split keyword and remove duplicates and non-alphabeticals
   let letters = keyword.toUpperCase().split('');
   letters = letters.filter((c) => /[a-zA-Z]/.test(c));
@@ -43,7 +43,7 @@ export const getKeySquare = (keyword) => {
       let letter = '';
       if (letters.length > 0) {
         letter = letters.shift();
-        alphabetLetters = alphabetLetters.filter((c) => c != letter);
+        alphabetLetters = alphabetLetters.filter((c) => c !== letter);
       } else {
         letter = alphabetLetters.shift();
       }
@@ -81,7 +81,7 @@ const find = (keysquare, a, b) => {
 
 // given a keysquare and message, encrypts using the playfair cipher
 export const playfairEncrypt = (keysquare, message) => {
-  let res = '';
+  let res = [];
   let plaintext = message.toUpperCase().split('');
   // remove non alphabetical characters from plaintext
   plaintext = plaintext.filter((c) => /[a-zA-Z]/.test(c));
@@ -92,17 +92,30 @@ export const playfairEncrypt = (keysquare, message) => {
     }
   }
   // if odd number, append with x
-  if (plaintext.length % 2 != 0) {
+  if (plaintext.length % 2 !== 0) {
     plaintext.push('X');
   }
-  console.log(plaintext);
   // now, examine pairs of letters!
   for (let i = 0; i < plaintext.length; i += 2) {
     // different row and column
     const positions = find(keysquare, plaintext[i], plaintext[i + 1]);
-    const a = positions[0];
-    const b = positions[1];
-    console.log(a, b);
+    const aRow = positions[0][0];
+    const aCol = positions[0][1];
+    const bRow = positions[1][0];
+    const bCol = positions[1][1];
+    if (aRow === bRow) {
+      // same row
+      res.push(keysquare[aRow][(aCol + 1) % 5]);
+      res.push(keysquare[bRow][(bCol + 1) % 5]);
+    } else if (aCol === bCol) {
+      // same column
+      res.push(keysquare[(aRow + 1) % 5][aCol]);
+      res.push(keysquare[(bRow + 1) % 5][bCol]);
+    } else {
+      // different row and column
+      res.push(keysquare[aRow][bCol]);
+      res.push(keysquare[bRow][aCol]);
+    }
   }
-  return res;
+  return res.join('');
 };
