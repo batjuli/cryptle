@@ -8,7 +8,7 @@ import PlayfairInfo from '../components/PlayfairInfo';
 import KeySquare from '../components/KeySquare';
 import PlayfairModal from '../components/PlayfairModal';
 
-import { getKeySquare } from '../utils/playfairCipher';
+import { getKeySquare, playfairEncrypt } from '../utils/playfairCipher';
 
 const PlayfairCipher = () => {
   const [keywordValue, setKeywordValue] = React.useState('');
@@ -32,6 +32,9 @@ const PlayfairCipher = () => {
   const handleModalClose = () => setModalOpen(false);
 
   const keysquare = getKeySquare(keywordValue);
+
+  const encryptedMessage = playfairEncrypt(keysquare, messageValue);
+  console.log(encryptedMessage);
 
   return (
     <Container>

@@ -53,3 +53,56 @@ export const getKeySquare = (keyword) => {
   }
   return res;
 };
+
+// finds the position of letters in the keysquare
+const find = (keysquare, a, b) => {
+  // convert j's to i's
+  if (a === 'J') {
+    a = 'I';
+  }
+  if (b === 'J') {
+    b = 'I';
+  }
+  // locate
+  let resA = [null, null];
+  let resB = [null, null];
+  for (let i = 0; i < 5; i++) {
+    for (let j = 0; j < 5; j++) {
+      if (keysquare[i][j] === a) {
+        resA = [i, j];
+      }
+      if (keysquare[i][j] === b) {
+        resB = [i, j];
+      }
+    }
+  }
+  return [resA, resB];
+};
+
+// given a keysquare and message, encrypts using the playfair cipher
+export const playfairEncrypt = (keysquare, message) => {
+  let res = '';
+  let plaintext = message.toUpperCase().split('');
+  // remove non alphabetical characters from plaintext
+  plaintext = plaintext.filter((c) => /[a-zA-Z]/.test(c));
+  // identify double letters and replace second with 'x'
+  for (let i = 1; i < plaintext.length; i++) {
+    if (plaintext[i] === plaintext[i - 1]) {
+      plaintext[i] = 'X';
+    }
+  }
+  // if odd number, append with x
+  if (plaintext.length % 2 != 0) {
+    plaintext.push('X');
+  }
+  console.log(plaintext);
+  // now, examine pairs of letters!
+  for (let i = 0; i < plaintext.length; i += 2) {
+    // different row and column
+    const positions = find(keysquare, plaintext[i], plaintext[i + 1]);
+    const a = positions[0];
+    const b = positions[1];
+    console.log(a, b);
+  }
+  return res;
+};
