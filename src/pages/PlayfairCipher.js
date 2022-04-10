@@ -2,11 +2,12 @@ import React from 'react';
 
 import styled from 'styled-components';
 
+import PlayfairInfo from '../components/PlayfairInfo';
+
 const PlayfairCipher = () => {
   return (
     <Container>
-      <h2>Playfair Cipher</h2>
-      <p>The Playfair Cipher is...</p>
+      <PlayfairInfo />
     </Container>
   );
 };
