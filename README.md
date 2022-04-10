@@ -1,3 +1,9 @@
+# Cryptle
+
+Cryptle is a web application for playing cryptogram puzzles and learning about ciphers. It is my Something Awesome! project for COMP6441.
+
+The project is deployed on GitHub Pages at https://batjuli.github.io/cryptle/
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
