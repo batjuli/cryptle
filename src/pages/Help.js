@@ -15,6 +15,18 @@ const Help = () => {
         A cryptogram is a type of game where you attempt to decrypt an encrypted
         message through substituting letters.{' '}
       </p>
+      <p>
+        Here are some tips to help you get started on solving:
+        <ul>
+          <li>Common words with single letters: A or I</li>
+          <li>
+            Common words with two letters: IN, IT, IS, AN, AT, AS, SO, OF, OR
+          </li>
+          <li>Common words with three letters: THE, AND, WAS, HAS</li>
+          <li>Two of the same letter together: EE, OO</li>
+          <li>Following apostrophes: S, T, D, LL, VE, RE</li>
+        </ul>
+      </p>
     </Container>
   );
 };

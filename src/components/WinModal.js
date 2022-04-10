@@ -24,12 +24,7 @@ const WinModal = (props) => {
 
   return (
     <div>
-      <Modal
-        open={open}
-        onClose={handleModalClose}
-        aria-labelledby='modal-modal-title'
-        aria-describedby='modal-modal-description'
-      >
+      <Modal open={open} onClose={handleModalClose}>
         <Box sx={style}>
           <Typography id='modal-modal-title' variant='h6' component='h2'>
             Awesome job!

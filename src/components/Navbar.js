@@ -7,8 +7,14 @@ import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import { Link } from 'react-router-dom';
 
 import Sidebar from './Sidebar';
+import HelpModal from './HelpModal';
 
 const Navbar = () => {
+  // state for help modal
+  const [modalOpen, setModalOpen] = React.useState(false);
+  const handleModalOpen = () => setModalOpen(true);
+  const handleModalClose = () => setModalOpen(false);
+
   return (
     <AppBar
       position='sticky'
@@ -16,6 +22,7 @@ const Navbar = () => {
     >
       <Toolbar>
         <Sidebar />
+        <HelpModal open={modalOpen} handleModalClose={handleModalClose} />
         <Title>
           <Link style={{ textDecoration: 'none', color: 'white' }} to='/'>
             cryptle
@@ -25,8 +32,7 @@ const Navbar = () => {
           color='primary'
           aria-label='help button'
           sx={{ color: 'white' }}
-          component={Link}
-          to='/help'
+          onClick={handleModalOpen}
         >
           <HelpOutlineIcon fontSize='large' />
         </IconButton>
