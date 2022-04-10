@@ -2,8 +2,11 @@ import React from 'react';
 
 import styled from 'styled-components';
 
+import { Button } from '@mui/material';
+
 import PlayfairInfo from '../components/PlayfairInfo';
 import KeySquare from '../components/KeySquare';
+import PlayfairModal from '../components/PlayfairModal';
 
 import { getKeySquare } from '../utils/playfairCipher';
 
@@ -13,14 +16,47 @@ const PlayfairCipher = () => {
     setKeywordValue(event.target.value);
   };
 
+  const [messageValue, setMessageValue] = React.useState('');
+  const handleMessageChange = (event) => {
+    setMessageValue(event.target.value);
+  };
+
+  const [cipherValue, setCipherValue] = React.useState('');
+  const handleCipherChange = (event) => {
+    setCipherValue(event.target.value);
+  };
+
+  // state for the algorithm modal
+  const [modalOpen, setModalOpen] = React.useState(false);
+  const handleModalOpen = () => setModalOpen(true);
+  const handleModalClose = () => setModalOpen(false);
+
   const keysquare = getKeySquare(keywordValue);
 
   return (
     <Container>
       <PlayfairInfo />
-      <div>Keyword:</div>
-      <TextInput rows='1' value={keywordValue} onChange={handleKeywordChange} />
-      <KeySquare keysquare={keysquare} />
+      <Button
+        variant='outlined'
+        sx={{ width: '250px' }}
+        onClick={handleModalOpen}
+      >
+        How the cipher works
+      </Button>
+      <PlayfairModal open={modalOpen} handleModalClose={handleModalClose} />
+      <KeySquareContainer>
+        <div>Keyword:</div>
+        <KeywordInput
+          rows='1'
+          value={keywordValue}
+          onChange={handleKeywordChange}
+        />
+        <KeySquare keysquare={keysquare} />
+      </KeySquareContainer>
+      <div>Your message:</div>
+      <TextInput rows='4' value={messageValue} onChange={handleMessageChange} />
+      <div>Encrypted message:</div>
+      <TextInput rows='4' value={cipherValue} onChange={handleCipherChange} />
     </Container>
   );
 };
@@ -31,13 +67,34 @@ const Container = styled.div`
   width: 60vw;
 `;
 
-const TextInput = styled.input`
+const KeywordInput = styled.input`
   resize: none;
   font-size: 1.2em;
   border: 3px solid #616169;
   border-radius: 5px;
   padding: 10px;
   width: 300px;
+  &:focus {
+    outline-width: 0;
+    border-color: #cba05f;
+    transition: border-color 0.3s ease-in-out;
+  }
+`;
+
+const KeySquareContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+`;
+
+const TextInput = styled.textarea`
+  resize: none;
+  font-size: 1.2em;
+  border: 3px solid #616169;
+  border-radius: 5px;
+  padding: 10px;
   &:focus {
     outline-width: 0;
     border-color: #cba05f;
