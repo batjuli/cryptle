@@ -157,7 +157,7 @@ const Main = () => {
         handleLetterSelect={setSelectedLetter}
         selectedLetter={selectedLetter}
       />
-      <Keyboard handleKeyPress={handleKeyPress} />
+      <Keyboard handleKeyPress={handleKeyPress} gameState={gameState} />
     </Container>
   );
 };

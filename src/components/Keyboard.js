@@ -8,18 +8,26 @@ import NextKey from './NextKey';
 import Key from './Key';
 
 const Keyboard = (props) => {
-  const { handleKeyPress } = props;
+  const { handleKeyPress, gameState } = props;
 
   const row1 = ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'];
   const row2 = ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'];
   const row3 = ['NEXT', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', 'DEL'];
+
+  const userValues = gameState.map((letter) => {
+    return letter[1];
+  });
 
   return (
     <KeyboardContainer>
       {[row1, row2].map((row) => (
         <KeyboardRow>
           {row.map((letter) => (
-            <Key handleKeyPress={handleKeyPress} letter={letter} />
+            <Key
+              handleKeyPress={handleKeyPress}
+              letter={letter}
+              userValues={userValues}
+            />
           ))}
         </KeyboardRow>
       ))}
@@ -30,7 +38,13 @@ const Keyboard = (props) => {
           } else if (letter === 'NEXT') {
             return <NextKey />;
           } else {
-            return <Key handleKeyPress={handleKeyPress} letter={letter} />;
+            return (
+              <Key
+                handleKeyPress={handleKeyPress}
+                letter={letter}
+                userValues={userValues}
+              />
+            );
           }
         })}
       </BottomKeyboardRow>
