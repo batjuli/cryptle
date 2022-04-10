@@ -59,7 +59,7 @@ const Box = styled.div`
   line-height: 50px;
 `;
 
-const EncryptedLetter = styled.text`
+const EncryptedLetter = styled.div`
   text-align: center;
   font-size: 1.7em;
   color: #616169;

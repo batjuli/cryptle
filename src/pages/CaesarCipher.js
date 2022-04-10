@@ -48,7 +48,7 @@ const CaesarCipher = () => {
     // make string
     const cipherString = cipherArray.join('');
     setCipherValue(cipherString);
-  }, [messageValue, shift]);
+  }, [messageValue, shift, mapping]);
 
   return (
     <Container>
