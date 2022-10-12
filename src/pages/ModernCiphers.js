@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const ModernCiphers = () => {
   return (
     <Container>
       <h2>Modern Ciphers</h2>
-      <p>Modern ciphers are...</p>
+      <p>Modern ciphers are pretty cool!</p>
     </Container>
   );
 };
